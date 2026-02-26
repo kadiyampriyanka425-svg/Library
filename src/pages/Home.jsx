@@ -1,32 +1,65 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-
-function Home() {
+const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-      
-      <Header />
+    <div className="min-h-screen flex flex-col">
 
-      <main className="flex-grow flex items-center justify-center px-6">
-        <div className="text-center max-w-2xl bg-white p-10 rounded-xl shadow-lg">
-          <h2 className="text-4xl font-bold text-blue-600 mb-4">
-            Welcome to Digital Library
-          </h2>
-
-          <p className="text-gray-600 text-lg mb-6">
-            Search, explore, and read your favorite books online anytime.
-          </p>
-
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
-            Explore Books
-          </button>
+      {/* Navbar */}
+      <nav className="bg-blue-600 text-white px-6 py-4 flex justify-between items-center">
+        <h1 className="text-xl font-bold">Digital Library</h1>
+        <div className="space-x-4">
+          <a href="/login" className="hover:underline">Login</a>
+          <a href="/register" className="hover:underline">Register</a>
         </div>
-      </main>
+      </nav>
 
-      <Footer />
+      {/* Hero Section */}
+      <section className="flex-1 flex flex-col justify-center items-center text-center bg-gray-100 px-4">
+        <h2 className="text-4xl font-bold mb-4">
+          Welcome to Digital Library
+        </h2>
+        <p className="text-gray-600 max-w-xl mb-6">
+          Access thousands of books online, manage library records,
+          and explore knowledge anytime, anywhere.
+        </p>
+        <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+          Explore Books
+        </button>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-12 bg-white">
+        <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-6">
+          
+          <div className="p-6 shadow rounded-lg text-center">
+            <h3 className="text-xl font-semibold mb-2">📚 Huge Collection</h3>
+            <p className="text-gray-600">
+              Browse and read books from various categories.
+            </p>
+          </div>
+
+          <div className="p-6 shadow rounded-lg text-center">
+            <h3 className="text-xl font-semibold mb-2">🔍 Easy Search</h3>
+            <p className="text-gray-600">
+              Quickly find books using title, author, or category.
+            </p>
+          </div>
+
+          <div className="p-6 shadow rounded-lg text-center">
+            <h3 className="text-xl font-semibold mb-2">🛡 Secure Access</h3>
+            <p className="text-gray-600">
+              Safe login system for users and admins.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-white text-center py-4">
+        © 2026 Digital Library Management System
+      </footer>
 
     </div>
   );
-}
+};
 
 export default Home;

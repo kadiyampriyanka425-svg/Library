@@ -9,22 +9,25 @@ function Header() {
         </h2>
 
         <div className="space-x-6 text-lg">
-          <Link 
-            to="/home" 
+          {/* Home */}
+          <Link
+            to="/"
             className="hover:text-yellow-300 transition duration-300"
           >
             Home
           </Link>
 
-          <Link 
-            to="/books" 
+          {/* Dashboard / Books (example) */}
+          <Link
+            to="/dashboard"
             className="hover:text-yellow-300 transition duration-300"
           >
-            Books
+            Dashboard
           </Link>
 
-          <Link 
-            to="/" 
+          {/* Login */}
+          <Link
+            to="/login"
             className="bg-white text-blue-600 px-4 py-1 rounded-md hover:bg-yellow-300 hover:text-black transition duration-300"
           >
             Login

@@ -1,96 +1,125 @@
-import React, { useState } from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { useState } from "react";
 
-function Register() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Registered Data:", formData);
-    alert("Registration successful!");
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    console.log({
+      name,
+      email,
+      password,
+    });
   };
 
   return (
-    <div style={styles.container}>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <h2>Register</h2>
+    <>
+      <Header />
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Full Name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          style={styles.input}
-        />
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white w-full max-w-md p-8 rounded-lg shadow-lg">
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          style={styles.input}
-        />
+          <h2 className="text-2xl font-bold text-center mb-6">
+            Register
+          </h2>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          style={styles.input}
-        />
+          <form className="space-y-4" onSubmit={handleSubmit}>
 
-        <button type="submit" style={styles.button}>
-          Register
-        </button>
-      </form>
-    </div>
+            {/* Name */}
+            <div>
+              <label className="block text-gray-600 mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            {/* Email */}
+            <div>
+              <label className="block text-gray-600 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="example@gmail.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="block text-gray-600 mb-1">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="********"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            {/* Confirm Password */}
+            <div>
+              <label className="block text-gray-600 mb-1">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                placeholder="********"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+                required
+              />
+            </div>
+
+            {/* Register Button */}
+            <button
+              type="submit"
+              className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+            >
+              Register
+            </button>
+
+          </form>
+
+          {/* Login Link */}
+          <p className="text-center text-gray-600 mt-4">
+            Already have an account?{" "}
+            <a href="/login" className="text-blue-600 hover:underline">
+              Login
+            </a>
+          </p>
+
+        </div>
+      </div>
+
+      <Footer />
+    </>
   );
-}
-
-const styles = {
-  container: {
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#f3f4f6",
-  },
-  form: {
-    backgroundColor: "#fff",
-    padding: "20px",
-    width: "300px",
-    borderRadius: "8px",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    margin: "8px 0",
-  },
-  button: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#2563eb",
-    color: "#fff",
-    border: "none",
-    cursor: "pointer",
-  },
 };
 
 export default Register;
